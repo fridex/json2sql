@@ -1,0 +1,17 @@
+language: python
+python:
+- '3.4'
+- '3.5'
+- '3.6'
+install:
+- make devenv
+script: make check
+deploy:
+  provider: pypi
+  user: fridex
+  password:
+    secure: HlhCEQbc/8QTGTKyMXq9OujWK1h75dIoecqPRQRPUb3WVvNo9gpxaaThHOy7DAJHrk0dfn5DPaLw6euZeZQV7WC1hZoEp8TIIqLkmbgdSjwPNLANmkC/upyYjvYpyZmzCyGe4gWfLvqYOCNpG9oZxLf669ZLT3U3Apy8ZswE9JM9exZg0aSakde2eVoSN6kI5byYTbrykByiaYpoV8MaeMjYUztG0yhljaR1iMZ+5VPtjx2+6jMMEe3N4nKlF7AKuOgRMCYhbmTUJf9wn2nUSJVICZ2soKzdNRuhoPPVTkK5lJpH3ELim0Tze5b+AN7oQP3EHC3lCeEQd2wFu6hci4Foi6PzKaDpKrUc2KzXyTwCrKvOqvUyJ2IIavpzR32f8/lAua3eOWruM909umvUGBm6o4zSj6tqKQ4sY6lmlIkNEwnnSHb/BPbuEgpZI4faBbRuwGYyFv+gZYCoWpt4bLXap9+xqETvs/Onp0aOPdpc77m56GeIfwUECCD71B7TkeiKE6y5J0ubLZkTMueDjbPwrMs/hZ4EfRvUfDmVB7b2KtUlsa5mrsGXB6MQxccTu1E/e4/RUzIUCS6DN7L4IhR2eGYW4QuuiSbChdMbHxGTEkWhWgNPX0GaA5+IYMknuk9COMWUMAR4QLJfkNE60EkhUtmyYyOzNsMBg8vNuNI=
+  on:
+    tags: true
+    branch: master
+  distributions: sdist bdist_wheel

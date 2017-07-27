@@ -1,0 +1,4 @@
+[Default]
+bears = PEP8Bear,BanditBear,PyImportSortBear
+files = json2sql/*.py,json2sql-cli.py
+max_line_length = 121

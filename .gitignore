@@ -1,0 +1,10 @@
+venv
+venv-coala
+*.pyc
+dist
+*.py.orig
+json2sql.egg-info
+build
+.coverage
+.cache
+coverage.xml

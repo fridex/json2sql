@@ -19,7 +19,7 @@ from .json2sql import replace2sql
 from .json2sql import select2sql
 from .json2sql import update2sql
 
-__version__ = '0.0.0'
+__version__ = '1.0.0rc1'
 __version_info__ = __version__.split('.')
 __title__ = 'json2sql'
 __author__ = 'Fridolin Pokorny'

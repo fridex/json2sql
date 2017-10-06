@@ -12,6 +12,7 @@ from .errors import Json2SqlInternalError
 from .errors import NoStatementError
 from .errors import ParsingInputError
 from .errors import UnknownStatementError
+from .errors import UnsupportedDefinitionError
 from .json2sql import delete2sql
 from .json2sql import insert2sql
 from .json2sql import json2sql
@@ -19,7 +20,7 @@ from .json2sql import replace2sql
 from .json2sql import select2sql
 from .json2sql import update2sql
 
-__version__ = '0.0.0'
+__version__ = '1.0.0rc1'
 __version_info__ = __version__.split('.')
 __title__ = 'json2sql'
 __author__ = 'Fridolin Pokorny'

@@ -104,4 +104,4 @@ def json2sql(raw_json=None, **definition):  # pylint: disable=too-many-branches
         if isinstance(exc, Json2SqlError):
             raise
 
-        raise Json2SqlInternalError("Internal json2sql error: %s" % str(exc))
+        raise Json2SqlInternalError("Internal json2sql error: %s" % str(exc)) from exc

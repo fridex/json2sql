@@ -32,3 +32,7 @@ class ParsingInputError(Json2SqlError):
 
 class InputError(Json2SqlError):
     """Error when calling json2sql routines."""
+
+
+class UnsupportedDefinitionError(Json2SqlError):
+    """Error raised when supplied unsupported SQL definition."""

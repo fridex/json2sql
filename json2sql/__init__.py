@@ -12,6 +12,7 @@ from .errors import Json2SqlInternalError
 from .errors import NoStatementError
 from .errors import ParsingInputError
 from .errors import UnknownStatementError
+from .errors import UnsupportedDefinitionError
 from .json2sql import delete2sql
 from .json2sql import insert2sql
 from .json2sql import json2sql

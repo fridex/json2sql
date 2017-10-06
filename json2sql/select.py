@@ -12,6 +12,8 @@ import mosql.query as mosql_query
 from mosql.query import select
 from mosql.util import raw as mosql_raw
 
+from .errors import ParsingInputError
+from .errors import UnsupportedDefinitionError
 from .utils import any2sql
 
 DEFAULT_FILTER_KEY = os.getenv('JSON2SQL_FILTER_KEY', '$filter')
@@ -49,10 +51,10 @@ def _construct_select_query(**filter_definition):
     select_count = filter_definition.pop('count', False)
 
     if distinct and select_count:
-        raise ValueError('SELECT (DISTINCT ...) is not supported')
+        raise UnsupportedDefinitionError('SELECT (DISTINCT ...) is not supported')
 
     if select_count and 'select' in filter_definition:
-        raise ValueError('SELECT COUNT(columns) is not supported')
+        raise UnsupportedDefinitionError('SELECT COUNT(columns) is not supported')
 
     if 'joins' in filter_definition:
         join_definitions = filter_definition.pop('joins')
@@ -70,8 +72,7 @@ def _construct_select_query(**filter_definition):
                 # We can do it recursively here
                 sub_query = value.pop(DEFAULT_FILTER_KEY)
                 if value:
-                    #_logger.warning("Ignoring sub-query parameters: %s", value)
-                    raise ValueError("TBD")
+                    raise ParsingInputError("Unknown keys for sub-query provided: %s" % value)
                 filter_definition['where'][key] = mosql_raw('( {} )'.format(_construct_select_query(**sub_query)))
             elif isinstance(value, str) and value.startswith('$') and QUERY_REFERENCE.fullmatch(value[1:]):
                 # Make sure we construct correct query with escaped table name and escaped column for sub-queries

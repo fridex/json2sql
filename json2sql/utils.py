@@ -13,7 +13,6 @@ from mosql.util import raw as mosql_raw
 
 from .errors import ClauseError
 from .errors import InputError
-from .errors import Json2SqlInternalError
 from .errors import ParsingInputError
 
 
@@ -52,8 +51,12 @@ def any2sql(func, definition_dict=None, **definition_kwargs):
     try:
         result = func(**definition)
     except (TypeError, AttributeError) as exc:
-        raise ClauseError("Clause definition error: %s" % str(exc))
+        raise ClauseError("Clause definition error: %s" % str(exc)) from exc
     except Exception as exc:
-        raise Json2SqlInternalError("Unhandled error: %s" % str(exc))
+        import json2sql.errors as json2sql_errors
+
+        if exc.__class__.__name__ not in json2sql_errors.__dict__.keys():
+            raise json2sql_errors.Json2SqlInternalError("Unhandled error: %s" % str(exc)) from exc
+        raise
 
     return result

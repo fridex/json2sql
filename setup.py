@@ -39,6 +39,7 @@ setup(
     name=NAME,
     version=get_version(),
     packages=[NAME],
+    scripts=['json2sql-cli'],
     install_requires=get_requirements(),
     author='Fridolin Pokorny',
     author_email='fridolin.pokorny@gmail.com',

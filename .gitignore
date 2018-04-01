@@ -2,6 +2,7 @@ venv
 venv-coala
 *.pyc
 dist
+.idea/
 *.py.orig
 json2sql.egg-info
 build

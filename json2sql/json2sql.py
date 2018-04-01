@@ -100,8 +100,11 @@ def json2sql(raw_json=None, **definition):  # pylint: disable=too-many-branches
         else:
             raise UnknownStatementError("Unknown statement provided '%s' in definition %s"
                                         % (statement, definition))
-    except Exception as exc:
+    except Exception as exc:  # pylint: disable=broad-except
         if isinstance(exc, Json2SqlError):
             raise
 
         raise Json2SqlInternalError("Internal json2sql error: %s" % str(exc)) from exc
+
+    # Just to make Pylint happy :)
+    raise Json2SqlInternalError("Unreachable state reached")

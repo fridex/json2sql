@@ -27,7 +27,7 @@ clean:
 
 pytest:
 	@echo ">>> Executing testsuite"
-	python3 -m pytest -s --cov=./json2sql -vvl --nocapturelog --timeout=2 test/*.py
+	python3 -m pytest -s --cov=./json2sql -vvl --timeout=2 test/*.py
 
 pylint:
 	@echo ">>> Running pylint"
